@@ -1,0 +1,15 @@
+#Remove .zip and .csv files
+**__pycache__
+**zip
+*.csv
+.ipynb_checkpoints
+**vscode
+**log
+*.png
+*.jpg
+**gz
+*.out
+*.pdf
+*.gif
+*.mp4
+*.docx

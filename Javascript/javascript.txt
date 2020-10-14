@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+	</head>
+	<body>
+		<script>
+			document.write("Hello, World");
+		</script>
+	</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+	</head>
+	<body>
+		<script>
+			var words = "This is";
+			var morewords = " a sentence";
+			var sentence = words + morewords;
+			document.write(sentence);
+		</script>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+	</head>
+	<body>
+		<script>
+			var num1 = 5;
+			var num2 = 3;
+			var total = num1 + num2;
+			document.write(total);
+		</script>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+	</head>
+	<body>
+		<script>
+			var num1 = 5;
+			var num2 = 3;
+			var total = num1++;
+			//document.write(total);
+			document.write(num1);
+		</script>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+	</head>
+	<body>
+		<script>
+			var num1 = 5;
+			var num2 = 3;
+			var total = ++num1;
+			//document.write(total);
+			document.write(num1);
+		</script>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+	</head>
+	<body>
+		<script>
+			var alpha = "ABCDEFG";
+			var length = alpha.length;
+			document.write(length);
+		</script>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+	</head>
+	<body>
+		<script>
+			var alpha = "ABCDEFG";
+			var result = alpha.substring(3, 5);
+			document.write(result);
+		</script>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+	</head>
+	<body>
+		<script>
+			var alpha = "ABCDEFG";
+			var result = alpha.substring(0, 5);
+			document.write(result);
+		</script>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+	</head>
+	<body>
+		<script>
+			var a = ["dog", "cat", 3, 5, false]
+			document.write(a[0]);
+		</script>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+	</head>
+	<body>
+		<script>
+			var a = 15;
+			if (a > 10) {
+			alert(a);
+			}
+		</script>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript</title>
+	</head>
+	<body>
+		<script>
+			for (i=0;i<5;i++){
+				document.write("This is iteration" + i + "<br>");
+			}
+			//continue
+		</script>
+	</body>
+</html>

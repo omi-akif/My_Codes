@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(97, 90, 90);
+    border: 2px solid black;
+}
+#container{
+    background-color: rgb(60,96,78);
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#header{
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+#content{
+    padding: 20px;
+}

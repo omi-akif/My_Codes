@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-US"></html>
+<head>
+    <meta charset="UTF=8">
+    <!--<meta http-equiv="refresh" content="60">-->
+    <title>JavaScript</title>
+</head>
+<body>
+    <h1>JavaScript Class</h1> <!--Interpret and to Bytecode-->
+
+    <!--Internal JavaScript-->
+        <label>User Name: </label>
+        <input type="text" id="username" placeholder="Enter your name">
+        <input type="password" id="password" placeholder="Enter your password">
+        <!--<input type="button" value="Login" onclick="fun1()">-->
+        <button onclick="fun1()">Click</button>
+    <script>
+       console.log("Hello World");
+       document.write("Hello World");
+       // for declaring variable we will use [var | let | const]
+       var name='Ashrafur Rahman';
+       var a=10;
+       document.write(" " + name);
+       document.write(" "+ typeof(a));
+
+       const num1 = 20; // prepend, append // mutable and immutable
+
+       // num1 = 30;
+       console.log(num1);
+
+       let name2 = "spiderMan"
+       let num2 = 50;
+
+       // Data Type
+       // String | number | Array | Object
+       var str = 'EWU'; // or " "
+       var num0 = 100;
+       var fraction = 10.5;
+       console.log(typeof(fraction));
+
+       var arr1 = [1,2,3,4,5,6];
+       console.log(arr1);
+       var arr2 = ['Bangladesh', 100, 10, 'superMan']
+       console.log(arr2);
+       console.log(arr1[4]);
+
+       var superHeroes = ['superMan', 'spierMan', 'batMan', 'ironMan', 'captainMarvel']
+       console.log(superHeroes.length);
+
+       var person = {
+          name: 'Noot-E-Jannat',
+          id: 10,
+          department: 'CSE',
+          person2: {
+              name :'Nusrat',
+              id: 20,
+              department: 'CSE',
+          },
+
+          person3: {
+              name: 'Khandaker Akif Razzak',
+              id: 20,
+          }
+       };
+       console.log(person);  //JSON file
+       console.log(person.id);
+       console.log(person.id); // method and function
+       console.log(person.person2.id);
+
+       // Conditional Statements
+       // not equal = !=
+       // less that or equal = <=
+       var age = 10;
+       if(age >= 18){
+           console.log('You are eligible for vote');
+       }
+       else{
+           console.log('You are not eligible vor vote');
+       }
+
+       //H.W. JGrade System(A, A+, A-, B+)
+       console.log('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod porro similique quis pariatur, beatae sit iure molestiae hic dolorem rerum est ea labore officiis sed nam, repellat facilis. Possimus, deserunt.')
+       const student = ` Name: Labib
+                         Department: CSE
+                         ID: 10 `
+
+        //loop
+        //For loop
+        //While loop
+        var i;
+        //i++ => i+1
+        for(i=1; i<=11; i++){
+            console.log(n);
+        }
+        console.log('<br/>');
+        var n=0;
+        while(n<=11){
+            console.log(n);
+            n++
+        }
+
+        //anonymous function
+        // non anonymous function
+        let hello = function(){
+        console.log('Hello World');
+        }
+        hello();
+
+        var num4;
+        var num5;
+
+        let add = function(num4, num5){
+            let sum=num4+num5;
+            return sum;
+        }
+        console.log(add(10,10))
+        console.log('<br>')
+
+        var a = 10;
+        console.log(a);  // o/p = 10
+        if(a=11){
+             console.log(a);  // o/p = 11
+
+             //let b = 5;
+             var b = 200
+             console.log(b);  // o/p = 5
+        }
+        console.log(a);
+        console.log(b); // o/p = 200
+       //alert('Hello World')
+
+       //Event == clicking a button
+
+       /*
+          1. onclick()
+          2. onmouseover()
+          3. mouserright()
+          4. dbclick()
+       */
+
+       function fun1(){
+          var username = document.getElementById("username").value
+          var password = document.getElementById("password").value
+
+        if(username == "some" && password == "sm"){
+            alert("Logged In");
+            return false;
+        }
+        else{
+            alert("You failed")
+            return false;
+        }
+      }
+    </script>
+</body>

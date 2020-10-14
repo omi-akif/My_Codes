@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+  </head>
+
+  <body>
+    <p id="demo"></p>
+    <p id="bracket"></p>
+
+    <p id="user5"></p>
+
+  </body>
+
+    <script>
+        //let user = new Object();
+        let user = {
+            name:"omi",
+            age: 30,
+            admin: true,
+            "lovey dovey": 342
+        };
+
+        const user1 = {
+            name: "John",
+            age: 45,
+            admin: true,
+            "true occupation" : "FBI agent"
+        };
+
+        //user1 = summer; cause an error
+        //user1.admin = false; // will not cause any error
+
+        delete user.age;
+        document.getElementById('demo').innerHTML = user.admin;
+        //alert(user["lovey dovey"]);
+        document.getElementById('bracket').innerHTML = user["lovey dovey"];
+
+        let user3 = {};
+
+        user3["likes birds"] = true;
+
+        delete user["like birds"];
+
+        //let key = "bird watcher";
+        //user3[key] =true;
+
+        //alert(user3[key]);
+
+        let user5 = {
+          name: "samantha",
+          age: 45
+        }
+
+        //let key = prompt("What do you want to know about the user?");
+
+        //alert(user5[key]);
+
+        //document.getElementById('user5').innerHTML = user5.age;
+        
+        
+        //COMPUTED PROPERTIES
+
+        const suggestion = "Your favorite" // give a suggestion 
+        let password = prompt(`Type your password ${suggestion}`); // type the password
+        let type = {
+          [password]: true // confirming the password
+        };
+
+        alert("Password entered: " + type["samantha"]); // password confirmed
+
+        let fruit = 'apple';
+        let bag = {
+          [fruit + 'Computers']: 5 
+        }
+
+        //PROPERTY VALUE SHORTHAND
+
+        function makeUser(name, age){
+          return{
+            name,
+            age
+          };
+        }
+
+        let user6 = makeUser("John", 30);
+
+        //PROPERTY NAME LIMITATIONS
+
+        let obj = {
+          for: 1,
+          left: 2,
+          return: 3,
+
+          0: "test",
+        };
+
+        console.log(obj[0]);
+        console.log(obj['0']);
+
+        obj.__proto__=5;
+        console.log(obj.__proto__);
+
+        let user7 = {
+          name: "daini buri",
+          age: 30
+        };
+        console.log(user7.noSuchProperty === undefined); //Strict Equality (===) The values must have the same type
+        console.log(user7.noSuchProperty==5); //Type converting equality (==) it will convert the variable to value irrespective of data type
+
+        //PROPERTY EXISTENCE TEST "in" operator
+
+        console.log("age" in user7); //the property name needs to in quotes
+        console.log("harami" in user7); // if not in quotes then it will be considered as variable
+
+        let key = "age"; // Thus a variable needs to be declared containing the name of the property in quotes. It can be used then
+
+        let obj2 = {
+          test: undefined
+        };
+
+        console.log()
+        console.log("test" in obj)
+
+
+    </script>
+</html>

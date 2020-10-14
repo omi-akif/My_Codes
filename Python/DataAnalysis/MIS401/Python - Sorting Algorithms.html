@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://www.tutorialspoint.com/python/python_sorting_algorithms.htm -->
+<html style="" class=" js no-touch csstransforms3d csstransitions"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen"></style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}</style><style class="darkreader darkreader--user-agent" media="screen">html {
+    background-color: #212226 !important;
+}
+html, body, input, textarea, select, button {
+    background-color: #212226;
+}
+html, body, input, textarea, select, button {
+    border-color: #5b5b5b;
+    color: #deddd9;
+}
+a {
+    color: #3b8ff2;
+}
+table {
+    border-color: #515151;
+}
+::placeholder {
+    color: #b3afa8;
+}
+::selection {
+    background-color: #0d60c4;
+    color: #f2f2f2;
+}
+::-moz-selection {
+    background-color: #0d60c4;
+    color: #f2f2f2;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #585f0d !important;
+    color: #deddd9 !important;
+}
+::-webkit-scrollbar {
+    background-color: #25262a;
+    color: #bdbab4;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #2e333b;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #333a45;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #384454;
+}
+::-webkit-scrollbar-corner {
+    background-color: #212226;
+}
+* {
+    scrollbar-color: #2e333b #25262a;
+}</style>
+<!-- Basic -->
+
+<title>Python - Sorting Algorithms</title>
+<meta name="description" content="Python Data Structure Introduction - Learn Python Data Structure in simple and easy steps starting from basic to advanced concepts with examples including Introduction, Environment, Arrays, Lists, Tuples, Dictionary, 2-D Array, Matrix, Sets, Maps, Linked Lists, Stack, Queue, Dequeue, Advanced Linked list, Hash Table, Binary Tree, Search Tree, Heaps, Graphs, Algorithm Design, Divide and conquer, Recursion, backtracking, Tree Traversal, Sorting, Searching, Graph Algorithms, Algorithm Analysis, Big-O Notation, Algorithim classes, Amortized analysis, Algorithm Justifications.">
+<meta name="keywords" content="Python Data Structure, Tutorial, Introduction, Environment, Arrays, Lists, Tuples, Dictionary, 2-D Array, Matrix, Sets, Maps, Linked Lists, Stack, Queue, Dequeue, Advanced Linked list, Hash Table, Binary Tree, Search Tree, Heaps, Graphs, Algorithm Design, Divide and conquer, Recursion, backtracking, Tree Traversal, Sorting, Searching, Graph Algorithms, Algorithm Analysis, Big-O Notation, Algorithim classes, Amortized analysis, Algorithm Justifications.">
+<!--<base href="https://www.tutorialspoint.com/">--><base href=".">
+<link rel="shortcut icon" href="https://www.tutorialspoint.com/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="fb:app_id" content="471319149685276">
+<meta property="og:site_name" content="www.tutorialspoint.com">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="author" content="tutorialspoint.com">
+<script type="text/javascript" src="./Python - Sorting Algorithms_files/script-min-v4.js.download"></script><style></style><style class="darkreader darkreader--sync" media="screen"></style><style class="darkreader darkreader--override" media="screen">.jfk-bubble {
+    background-color: #0d0d0d !important;
+}
+.vimvixen-hint {
+    background-color: #7c5800 !important;
+    border-color: #cfab1e !important;
+    color: #e7dec1 !important;
+}</style>
+<link rel="stylesheet" href="./Python - Sorting Algorithms_files/style-min.css"><style class="darkreader darkreader--sync" media="screen"></style>
+<script>
+function openNav() {	
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("right_obs").style.display = "block";
+}
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("right_obs").style.display = "none";
+}
+function close_obs_sidenav(){
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("right_obs").style.display = "none";
+}
+</script>
+<!-- Head Libs -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
+<![endif]-->
+<style>
+#privacy-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem .5rem;
+    background: #fff;
+    z-index: 1030;
+    color: #000;
+    font-size: 14px;
+    margin: 0;
+    display: none;
+    border-top: 2px solid rgb(130, 130, 130);
+  }
+  #privacy-banner p {
+    margin: 0;
+    color: #000;
+    text-align: center;
+  }
+  #privacy-banner a {
+    text-decoration: none;
+    margin: 20px auto 0 auto;
+    display: block;
+    max-width: 150px;
+  }
+  #privacy-banner a:hover {
+    text-decoration: underline;
+  }
+  #banner-learn {
+    color: #000;
+  }
+  #banner-accept {
+    padding: 7px 15px;
+    color: #fff;
+    border-radius: 5px;
+    background:#737373 !important;
+  }
+  @media (min-width: 768px) {
+    #privacy-banner {
+      padding: 1.5rem .5rem;
+    }
+    #privacy-banner a {
+      display: inline-block;
+      margin: 0 10px;
+    }
+}
+select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
+.btnsbmt{ background: #3771a1 !important;}
+ul.nav-list.primary>li a.videolink{    background: none; margin: 0px; padding: 0px; border: 1px solid #d6d6d6;}
+div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #3771a1 url(/images/pattern.png) repeat center center !important;}
+.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #3771a1 !important;}
+.submenu-item{ border-bottom: 2px solid #3771a1 !important; border-top: 2px solid #3771a1 !important }
+.ace_scroller{overflow: auto!important;}
+a.demo{font-family: "Open Sans",Arial,sans-serif; background:#3771a1; color:#fff; font-size:13px; padding:3px 10px; border:1px solid #d6d6d6; position:absolute; right:5px; margin:-6px 17px 0px 0px;}
+a.demo:hover{opacity:.8}
+</style><style class="darkreader darkreader--sync" media="screen"></style>
+<script>
+$(document).ready(function() {
+  $('input[name="q"]').keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+</head>
+<body onload="prettyPrint()" style="">
+<div class="wrapLoader">
+   <div class="imgLoader">
+      <img src="./Python - Sorting Algorithms_files/loading-cg.gif" alt="" width="70" height="70">
+   </div>
+</div>
+<div id="right_obs" class="display-none" onclick="close_obs_sidenav()"></div>
+<header>
+   <div class="container">			
+      <h1 class="logo">
+      <a href="https://www.tutorialspoint.com/index.htm" title="tutorialspoint">
+      <img alt="tutorialspoint" src="./Python - Sorting Algorithms_files/logo.png">
+      </a>
+      </h1>			
+      <ul class="tp-inline-block pull-right" id="tp-head-icons">
+        <li>
+           <div class="tp-second-nav tp-display-none tp-pointer" onclick="openNav()">
+              <i class="fa fa-th-large fa-lg"></i>
+           </div>
+        </li>
+     </ul>
+     <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
+      <nav>
+         <ul class="nav nav-pills nav-top">
+            <li><a href="https://www.tutorialspoint.com/about/about_careers.htm" style="background: rgb(255, 251, 9); font-weight: bold; --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#c0bc0d;" data-darkreader-inline-bgimage="" data-darkreader-inline-bgcolor=""><i class="icon icon-suitcase"></i> Jobs</a></li>
+            <li> <a target="_blank" href="https://www.tutorialspoint.com/programming_examples/"><i class="fa fa-cubes"></i> &nbsp;Examples</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/whiteboard.htm"><img src="./Python - Sorting Algorithms_files/image-editor.png" alt="Whiteboard" title="Whiteboard"> &nbsp;Whiteboard</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/netmeeting.php"><i class="fa-camera"></i> &nbsp;Net Meeting</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/online_dev_tools.htm"> <i class="dev-tools-menu" style="opacity:.5"></i> Tools </a> </li>
+            <li> <a href="https://www.tutorialspoint.com/articles/index.php"><i class="icon icon-file-text-o"></i> &nbsp;Articles</a> </li>            
+            <li class="top-icons">
+              <ul class="social-icons">
+              <li class="facebook"><a href="https://www.facebook.com/tutorialspointindia" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Facebook">Facebook</a></li>
+              <li class="googleplus"><a href="https://plus.google.com/u/0/116678774017490391259/posts" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Google+">Google+</a></li>
+              <li class="twitter"><a href="https://www.twitter.com/tutorialspoint" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint @ Linkedin">Linkedin</a></li>
+              <li class="youtube"><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" rel="nofollow" data-placement="bottom" title="tutorialspoint YouTube">YouTube</a></li>
+              </ul>
+           </li>
+         </ul>
+      </nav>
+    </div>
+     <div class="sidenav" id="mySidenav">
+     <div class="navbar nav-main">
+      <div class="container">
+         <nav class="nav-main mega-menu">
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+               <li class="dropdown no-sub-menu"> <a class="dropdown" href="https://www.tutorialspoint.com/index.htm"><i class="icon icon-home"></i> Home</a> </li>   
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/questions/index.php"><i class="fa fa-send"></i> Q/A </a> </li>
+               <li class="dropdown"><a class="dropdown" href="https://www.tutorialspoint.com/tutorialslibrary.htm"><span class="tut-lib"> Library </span></a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/videotutorials/index.htm"><i class="fa-toggle-right"></i> Videos </a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/tutor_connect/index.php"><i class="fa-user"> </i> Tutors</a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/codingground.htm"><i class="fa-code"></i> Coding Ground </a> </li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://store.tutorialspoint.com/"><i class="fa-usd"></i> Store </a> </li>
+               <li class="dropdown no-sub-menu">
+                  <div class="searchform-popup">
+                     <input class="header-search-box" type="text" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == &#39;Search your favorite tutorials...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search your favorite tutorials...&#39;;}" autocomplete="off" style="">
+                     <div class="magnifying-glass"><i class="icon-search"></i> Search </div>
+                 </div>
+               </li>
+            </ul>
+         </nav>
+        </div>
+      </div>	
+     </div>	
+   	
+</header>
+<div style="clear:both;"></div>
+<div role="main" class="main">
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+<aside class="sidebar">
+<div class="mini-logo">
+<img src="./Python - Sorting Algorithms_files/python-data-structure-mini-logo.jpg" alt="Python Data Structure Tutorial">
+</div>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Python Data Structure and Algorithms Tutorial</li>
+<li><a href="https://www.tutorialspoint.com/python/python_data_structure.htm">Python - DS Home </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_data_structure_introduction.htm">Python - DS Introduction </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_data_structure_environment.htm">Python - DS Environment </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_arrays.htm">Python - Arrays  </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_lists_data_structure.htm">Python - Lists </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_tuples_data_structure.htm">Python - Tuples </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_dictionary_data_structure.htm">Python - Dictionary </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_2darray.htm">Python - 2-D Array </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_matrix.htm">Python - Matrix  </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_sets.htm">Python - Sets </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_maps.htm">Python - Maps </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_linked_lists.htm">Python - Linked Lists </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_stack.htm">Python - Stack </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_queue.htm">Python - Queue </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_dequeue.htm">Python - Dequeue </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_advanced_linked_list.htm">Python - Advanced Linked list </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_hash_table.htm">Python - Hash Table </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_binary_tree.htm">Python - Binary Tree </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_binary_search_tree.htm">Python - Search Tree </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_heaps.htm">Python - Heaps </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_graphs.htm">Python - Graphs </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_algorithm_design.htm">Python - Algorithm Design </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_divide_and_conquer.htm">Python - Divide and conquer </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_recursion.htm">Python - Recursion  </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_backtracking.htm">Python - backtracking </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_tree_traversal_algorithms.htm">Python - Tree Traversal Algorithms </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_sorting_algorithms.htm" style="background-color: rgb(214, 214, 214); --darkreader-inline-bgcolor:#2a2d33;" data-darkreader-inline-bgcolor="">Python - Sorting Algorithms </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_searching_algorithms.htm">Python - Searching Algorithms </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_graph_algorithms.htm">Python - Graph Algorithms </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_algorithm_analysis.htm">Python - Algorithm Analysis </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_big_o_notation.htm">Python - Big-O Notation </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_algorithm_classes.htm">Python - Algorithm classes </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_amortized_analysis.htm">Python - Amortized analysis </a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_algorithm_justifications.htm">Python - Algorithm Justifications </a></li>
+</ul>
+<!--<ul class="nav nav-list primary left-menu" >
+<li class="heading">Python Data Structure Resources</li>
+<li><a href="/python/python_data_structure_quick_guide.htm">Python DS - Quick Guide</a></li>
+<li><a href="/python/python_data_structure_useful_resources.htm">Python DS- Useful Resources</a></li>
+<li><a href="/python/python_data_structure_discussion.htm">Python DS - Discussion</a></li>
+</ul>-->
+<ul class="nav nav-list primary push-bottom left-menu special">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/upsc_ias_exams.htm">UPSC IAS Exams Notes</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+</aside>
+</div>
+<!-- PRINTING STARTS HERE -->
+<div class="row">
+<div class="content"> 
+<div class="col-md-7 middle-col">
+<h1>Python - Sorting Algorithms</h1>
+<hr>
+<div style="padding-bottom:5px;padding-left:10px;text-align: center;">Advertisements</div>
+<div style="text-align: center;">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "image";
+google_ad_channel = "";
+//--></script>
+<script type="text/javascript" src="./Python - Sorting Algorithms_files/f.txt"> 
+</script>
+</div>
+<hr>
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/python/python_tree_traversal_algorithms.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/python/python_searching_algorithms.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<div class="clearer"></div>
+<hr>
+<p>Sorting refers to arranging data in a particular format. Sorting algorithm specifies the way to arrange data in a particular order. Most common orders are in numerical or lexicographical order.</p>
+<p>The importance of sorting lies in the fact that data searching can be optimized to a very high level, if data is stored in a sorted manner. Sorting is also used to represent data in more readable formats. Below
+we see five such implementations of sorting in python.
+ </p>
+<ul class="list">
+<li>Bubble Sort</li>
+<li>Merge Sort</li>
+<li>Insertion Sort</li>
+<li>Shell Sort</li>
+<li>Selection Sort</li>
+</ul>
+<h2> Bubble Sort </h2>
+<p>It is a comparison-based algorithm in which each pair of adjacent elements is compared and the elements are swapped if they are not in order.</p>
+<pre class="prettyprint notranslate  prettyprinted" style=""><span class="kwd">def</span><span class="pln"> bubblesort</span><span class="pun">(</span><span class="pln">list</span><span class="pun">):</span><span class="pln">
+
+</span><span class="com"># Swap the elements to arrange in order</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> iter_num </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">list</span><span class="pun">)-</span><span class="lit">1</span><span class="pun">,</span><span class="lit">0</span><span class="pun">,-</span><span class="lit">1</span><span class="pun">):</span><span class="pln">
+        </span><span class="kwd">for</span><span class="pln"> idx </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">iter_num</span><span class="pun">):</span><span class="pln">
+            </span><span class="kwd">if</span><span class="pln"> list</span><span class="pun">[</span><span class="pln">idx</span><span class="pun">]&gt;</span><span class="pln">list</span><span class="pun">[</span><span class="pln">idx</span><span class="pun">+</span><span class="lit">1</span><span class="pun">]:</span><span class="pln">
+                temp </span><span class="pun">=</span><span class="pln"> list</span><span class="pun">[</span><span class="pln">idx</span><span class="pun">]</span><span class="pln">
+                list</span><span class="pun">[</span><span class="pln">idx</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> list</span><span class="pun">[</span><span class="pln">idx</span><span class="pun">+</span><span class="lit">1</span><span class="pun">]</span><span class="pln">
+                list</span><span class="pun">[</span><span class="pln">idx</span><span class="pun">+</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> temp
+
+
+list </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">19</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">31</span><span class="pun">,</span><span class="lit">45</span><span class="pun">,</span><span class="lit">6</span><span class="pun">,</span><span class="lit">11</span><span class="pun">,</span><span class="lit">121</span><span class="pun">,</span><span class="lit">27</span><span class="pun">]</span><span class="pln">
+bubblesort</span><span class="pun">(</span><span class="pln">list</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">print</span><span class="pun">(</span><span class="pln">list</span><span class="pun">)</span></pre>
+<p>When the above code is executed, it produces the following result −</p>
+<pre class="prettyprint notranslate  prettyprinted" style=""><span class="pun">[</span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">6</span><span class="pun">,</span><span class="pln"> </span><span class="lit">11</span><span class="pun">,</span><span class="pln"> </span><span class="lit">19</span><span class="pun">,</span><span class="pln"> </span><span class="lit">27</span><span class="pun">,</span><span class="pln"> </span><span class="lit">31</span><span class="pun">,</span><span class="pln"> </span><span class="lit">45</span><span class="pun">,</span><span class="pln"> </span><span class="lit">121</span><span class="pun">]</span></pre>
+<h2> Merge Sort </h2>
+<p>Merge sort first divides the array into equal halves and then combines them in a sorted manner.</p>
+<pre class="prettyprint notranslate  prettyprinted" style=""><span class="kwd">def</span><span class="pln"> merge_sort</span><span class="pun">(</span><span class="pln">unsorted_list</span><span class="pun">):</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> len</span><span class="pun">(</span><span class="pln">unsorted_list</span><span class="pun">)</span><span class="pln"> </span><span class="pun">&lt;=</span><span class="pln"> </span><span class="lit">1</span><span class="pun">:</span><span class="pln">
+        </span><span class="kwd">return</span><span class="pln"> unsorted_list
+</span><span class="com"># Find the middle point and devide it</span><span class="pln">
+    middle </span><span class="pun">=</span><span class="pln"> len</span><span class="pun">(</span><span class="pln">unsorted_list</span><span class="pun">)</span><span class="pln"> </span><span class="com">// 2</span><span class="pln">
+    left_list </span><span class="pun">=</span><span class="pln"> unsorted_list</span><span class="pun">[:</span><span class="pln">middle</span><span class="pun">]</span><span class="pln">
+    right_list </span><span class="pun">=</span><span class="pln"> unsorted_list</span><span class="pun">[</span><span class="pln">middle</span><span class="pun">:]</span><span class="pln">
+
+    left_list </span><span class="pun">=</span><span class="pln"> merge_sort</span><span class="pun">(</span><span class="pln">left_list</span><span class="pun">)</span><span class="pln">
+    right_list </span><span class="pun">=</span><span class="pln"> merge_sort</span><span class="pun">(</span><span class="pln">right_list</span><span class="pun">)</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> list</span><span class="pun">(</span><span class="pln">merge</span><span class="pun">(</span><span class="pln">left_list</span><span class="pun">,</span><span class="pln"> right_list</span><span class="pun">))</span><span class="pln">
+
+</span><span class="com"># Merge the sorted halves</span><span class="pln">
+
+</span><span class="kwd">def</span><span class="pln"> merge</span><span class="pun">(</span><span class="pln">left_half</span><span class="pun">,</span><span class="pln">right_half</span><span class="pun">):</span><span class="pln">
+
+    res </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[]</span><span class="pln">
+    </span><span class="kwd">while</span><span class="pln"> len</span><span class="pun">(</span><span class="pln">left_half</span><span class="pun">)</span><span class="pln"> </span><span class="pun">!=</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="kwd">and</span><span class="pln"> len</span><span class="pun">(</span><span class="pln">right_half</span><span class="pun">)</span><span class="pln"> </span><span class="pun">!=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">:</span><span class="pln">
+        </span><span class="kwd">if</span><span class="pln"> left_half</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln"> right_half</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]:</span><span class="pln">
+            res</span><span class="pun">.</span><span class="pln">append</span><span class="pun">(</span><span class="pln">left_half</span><span class="pun">[</span><span class="lit">0</span><span class="pun">])</span><span class="pln">
+            left_half</span><span class="pun">.</span><span class="pln">remove</span><span class="pun">(</span><span class="pln">left_half</span><span class="pun">[</span><span class="lit">0</span><span class="pun">])</span><span class="pln">
+        </span><span class="kwd">else</span><span class="pun">:</span><span class="pln">
+            res</span><span class="pun">.</span><span class="pln">append</span><span class="pun">(</span><span class="pln">right_half</span><span class="pun">[</span><span class="lit">0</span><span class="pun">])</span><span class="pln">
+            right_half</span><span class="pun">.</span><span class="pln">remove</span><span class="pun">(</span><span class="pln">right_half</span><span class="pun">[</span><span class="lit">0</span><span class="pun">])</span><span class="pln">
+    </span><span class="kwd">if</span><span class="pln"> len</span><span class="pun">(</span><span class="pln">left_half</span><span class="pun">)</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> </span><span class="lit">0</span><span class="pun">:</span><span class="pln">
+        res </span><span class="pun">=</span><span class="pln"> res </span><span class="pun">+</span><span class="pln"> right_half
+    </span><span class="kwd">else</span><span class="pun">:</span><span class="pln">
+        res </span><span class="pun">=</span><span class="pln"> res </span><span class="pun">+</span><span class="pln"> left_half
+    </span><span class="kwd">return</span><span class="pln"> res
+
+unsorted_list </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">64</span><span class="pun">,</span><span class="pln"> </span><span class="lit">34</span><span class="pun">,</span><span class="pln"> </span><span class="lit">25</span><span class="pun">,</span><span class="pln"> </span><span class="lit">12</span><span class="pun">,</span><span class="pln"> </span><span class="lit">22</span><span class="pun">,</span><span class="pln"> </span><span class="lit">11</span><span class="pun">,</span><span class="pln"> </span><span class="lit">90</span><span class="pun">]</span><span class="pln">
+
+</span><span class="kwd">print</span><span class="pun">(</span><span class="pln">merge_sort</span><span class="pun">(</span><span class="pln">unsorted_list</span><span class="pun">))</span></pre>
+<p>When the above code is executed, it produces the following result −</p>
+<pre class="prettyprint notranslate  prettyprinted" style=""><span class="pun">[</span><span class="lit">11</span><span class="pun">,</span><span class="pln"> </span><span class="lit">12</span><span class="pun">,</span><span class="pln"> </span><span class="lit">22</span><span class="pun">,</span><span class="pln"> </span><span class="lit">25</span><span class="pun">,</span><span class="pln"> </span><span class="lit">34</span><span class="pun">,</span><span class="pln"> </span><span class="lit">64</span><span class="pun">,</span><span class="pln"> </span><span class="lit">90</span><span class="pun">]</span></pre>
+<h2> Insertion Sort </h2>
+<p>Insertion sort involves finding the right place for a given element in a sorted list. So in beginning we compare the first two elements and sort them by comparing them.
+Then we pick the third element and find its proper position among the previous two sorted elements. This way we gradually go on adding more elements to the already sorted list by
+putting them in their proper position.</p>
+<pre class="prettyprint notranslate  prettyprinted" style=""><span class="kwd">def</span><span class="pln"> insertion_sort</span><span class="pun">(</span><span class="typ">InputList</span><span class="pun">):</span><span class="pln">
+    </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> len</span><span class="pun">(</span><span class="typ">InputList</span><span class="pun">)):</span><span class="pln">
+        j </span><span class="pun">=</span><span class="pln"> i</span><span class="pun">-</span><span class="lit">1</span><span class="pln">
+        nxt_element </span><span class="pun">=</span><span class="pln"> </span><span class="typ">InputList</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln">
+</span><span class="com"># Compare the current element with next one</span><span class="pln">
+		
+        </span><span class="kwd">while</span><span class="pln"> </span><span class="pun">(</span><span class="typ">InputList</span><span class="pun">[</span><span class="pln">j</span><span class="pun">]</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> nxt_element</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">and</span><span class="pln"> </span><span class="pun">(</span><span class="pln">j </span><span class="pun">&gt;=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">):</span><span class="pln">
+            </span><span class="typ">InputList</span><span class="pun">[</span><span class="pln">j</span><span class="pun">+</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="typ">InputList</span><span class="pun">[</span><span class="pln">j</span><span class="pun">]</span><span class="pln">
+            j</span><span class="pun">=</span><span class="pln">j</span><span class="pun">-</span><span class="lit">1</span><span class="pln">
+        </span><span class="typ">InputList</span><span class="pun">[</span><span class="pln">j</span><span class="pun">+</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> nxt_element
+
+list </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">19</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">31</span><span class="pun">,</span><span class="lit">45</span><span class="pun">,</span><span class="lit">30</span><span class="pun">,</span><span class="lit">11</span><span class="pun">,</span><span class="lit">121</span><span class="pun">,</span><span class="lit">27</span><span class="pun">]</span><span class="pln">
+insertion_sort</span><span class="pun">(</span><span class="pln">list</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">print</span><span class="pun">(</span><span class="pln">list</span><span class="pun">)</span></pre>
+<p>When the above code is executed, it produces the following result −</p>
+<pre class="prettyprint notranslate  prettyprinted" style=""><span class="pun">[</span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">11</span><span class="pun">,</span><span class="pln"> </span><span class="lit">19</span><span class="pun">,</span><span class="pln"> </span><span class="lit">27</span><span class="pun">,</span><span class="pln"> </span><span class="lit">30</span><span class="pun">,</span><span class="pln"> </span><span class="lit">31</span><span class="pun">,</span><span class="pln"> </span><span class="lit">45</span><span class="pun">,</span><span class="pln"> </span><span class="lit">121</span><span class="pun">]</span></pre>
+<h2>Shell Sort</h2>
+<p>Shell Sort involves sorting elements which are away from ech other. We sort a large sublist of a given list and go on reducing the size of the list until
+all elements are sorted. The below program finds the gap by equating it to half of the length of the list size and then starts sorting all
+elements in it. Then we keep resetting the gap until the entire list is sorted.  </p>
+<pre class="prettyprint notranslate  prettyprinted" style=""><span class="kwd">def</span><span class="pln"> shellSort</span><span class="pun">(</span><span class="pln">input_list</span><span class="pun">):</span><span class="pln">
+    
+    gap </span><span class="pun">=</span><span class="pln"> len</span><span class="pun">(</span><span class="pln">input_list</span><span class="pun">)</span><span class="pln"> </span><span class="com">// 2</span><span class="pln">
+    </span><span class="kwd">while</span><span class="pln"> gap </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">0</span><span class="pun">:</span><span class="pln">
+
+        </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">gap</span><span class="pun">,</span><span class="pln"> len</span><span class="pun">(</span><span class="pln">input_list</span><span class="pun">)):</span><span class="pln">
+            temp </span><span class="pun">=</span><span class="pln"> input_list</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln">
+            j </span><span class="pun">=</span><span class="pln"> i
+</span><span class="com"># Sort the sub list for this gap</span><span class="pln">
+
+            </span><span class="kwd">while</span><span class="pln"> j </span><span class="pun">&gt;=</span><span class="pln"> gap </span><span class="kwd">and</span><span class="pln"> input_list</span><span class="pun">[</span><span class="pln">j </span><span class="pun">-</span><span class="pln"> gap</span><span class="pun">]</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> temp</span><span class="pun">:</span><span class="pln">
+                input_list</span><span class="pun">[</span><span class="pln">j</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> input_list</span><span class="pun">[</span><span class="pln">j </span><span class="pun">-</span><span class="pln"> gap</span><span class="pun">]</span><span class="pln">
+                j </span><span class="pun">=</span><span class="pln"> j</span><span class="pun">-</span><span class="pln">gap
+            input_list</span><span class="pun">[</span><span class="pln">j</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> temp
+
+</span><span class="com"># Reduce the gap for the next element</span><span class="pln">
+
+        gap </span><span class="pun">=</span><span class="pln"> gap</span><span class="com">//2</span><span class="pln">
+
+list </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">19</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">31</span><span class="pun">,</span><span class="lit">45</span><span class="pun">,</span><span class="lit">30</span><span class="pun">,</span><span class="lit">11</span><span class="pun">,</span><span class="lit">121</span><span class="pun">,</span><span class="lit">27</span><span class="pun">]</span><span class="pln">
+
+shellSort</span><span class="pun">(</span><span class="pln">list</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">print</span><span class="pun">(</span><span class="pln">list</span><span class="pun">)</span></pre>
+<p>When the above code is executed, it produces the following result −</p>
+<pre class="prettyprint notranslate  prettyprinted" style=""><span class="pun">[</span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">11</span><span class="pun">,</span><span class="pln"> </span><span class="lit">19</span><span class="pun">,</span><span class="pln"> </span><span class="lit">27</span><span class="pun">,</span><span class="pln"> </span><span class="lit">30</span><span class="pun">,</span><span class="pln"> </span><span class="lit">31</span><span class="pun">,</span><span class="pln"> </span><span class="lit">45</span><span class="pun">,</span><span class="pln"> </span><span class="lit">121</span><span class="pun">]</span></pre>
+<h2>Selection Sort</h2>
+<p>In selection sort we start by finding the minimum value in a given list and move it to a sorted list. Then we repeat the process for each of the
+remaining elements in the unsorted list. The next element entering the sorted list is compared with the existing elements and placed at its correct position.
+So at the end all the elements from the unsorted list are sorted. </p>
+<pre class="prettyprint notranslate  prettyprinted" style=""><span class="kwd">def</span><span class="pln"> selection_sort</span><span class="pun">(</span><span class="pln">input_list</span><span class="pun">):</span><span class="pln">
+
+    </span><span class="kwd">for</span><span class="pln"> idx </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln">len</span><span class="pun">(</span><span class="pln">input_list</span><span class="pun">)):</span><span class="pln">
+
+        min_idx </span><span class="pun">=</span><span class="pln"> idx
+        </span><span class="kwd">for</span><span class="pln"> j </span><span class="kwd">in</span><span class="pln"> range</span><span class="pun">(</span><span class="pln"> idx </span><span class="pun">+</span><span class="lit">1</span><span class="pun">,</span><span class="pln"> len</span><span class="pun">(</span><span class="pln">input_list</span><span class="pun">)):</span><span class="pln">
+            </span><span class="kwd">if</span><span class="pln"> input_list</span><span class="pun">[</span><span class="pln">min_idx</span><span class="pun">]</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> input_list</span><span class="pun">[</span><span class="pln">j</span><span class="pun">]:</span><span class="pln">
+                min_idx </span><span class="pun">=</span><span class="pln"> j
+</span><span class="com"># Swap the minimum value with the compared value</span><span class="pln">
+
+        input_list</span><span class="pun">[</span><span class="pln">idx</span><span class="pun">],</span><span class="pln"> input_list</span><span class="pun">[</span><span class="pln">min_idx</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> input_list</span><span class="pun">[</span><span class="pln">min_idx</span><span class="pun">],</span><span class="pln"> input_list</span><span class="pun">[</span><span class="pln">idx</span><span class="pun">]</span><span class="pln">
+
+
+l </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">19</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">31</span><span class="pun">,</span><span class="lit">45</span><span class="pun">,</span><span class="lit">30</span><span class="pun">,</span><span class="lit">11</span><span class="pun">,</span><span class="lit">121</span><span class="pun">,</span><span class="lit">27</span><span class="pun">]</span><span class="pln">
+selection_sort</span><span class="pun">(</span><span class="pln">l</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">print</span><span class="pun">(</span><span class="pln">l</span><span class="pun">)</span></pre>
+<p>When the above code is executed, it produces the following result −</p>
+<pre class="prettyprint notranslate  prettyprinted" style=""><span class="pun">[</span><span class="lit">2</span><span class="pun">,</span><span class="pln"> </span><span class="lit">11</span><span class="pun">,</span><span class="pln"> </span><span class="lit">19</span><span class="pun">,</span><span class="pln"> </span><span class="lit">27</span><span class="pun">,</span><span class="pln"> </span><span class="lit">30</span><span class="pun">,</span><span class="pln"> </span><span class="lit">31</span><span class="pun">,</span><span class="pln"> </span><span class="lit">45</span><span class="pun">,</span><span class="pln"> </span><span class="lit">121</span><span class="pun">]</span></pre>
+
+<hr>
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/python/python_tree_traversal_algorithms.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="print-btn center">
+<a href="https://www.tutorialspoint.com/cgi-bin/printpage.cgi" target="_blank"><i class="icon icon-print big-font"></i> Print</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/python/python_searching_algorithms.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<hr>
+<!-- PRINTING ENDS HERE -->
+<div class="bottomgooglead" hidden="" drcrw4k="">
+<div class="bottomadtag" hidden="" drcrw4k="">Advertisements</div>
+<script><!--
+var width = 580;
+var height = 400;
+var format = "580x400_as";
+if( window.innerWidth < 468 ){
+   width = 300;
+   height = 250;
+   format = "300x250_as";
+}
+google_ad_client = "pub-7133395778201029";
+google_ad_width = width;
+google_ad_height = height;
+google_ad_format = format;
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script src="./Python - Sorting Algorithms_files/f.txt">
+</script>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" id="rightbar">
+<div class="simple-ad">
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open(&#39;https://www.facebook.com/sharer.php?u=&#39; + &#39;https://www.tutorialspoint.com/python/python_sorting_algorithms.htm&#39;,&#39;sharer&#39;,&#39;toolbar=0,status=0,width=626,height=456,top=&#39;+sTop+&#39;,left=&#39;+sLeft);return false;">
+<img src="./Python - Sorting Algorithms_files/facebookIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open(&#39;https://twitter.com/share?url=&#39; + &#39;https://www.tutorialspoint.com/python/python_sorting_algorithms.htm&#39;,&#39;sharer&#39;,&#39;toolbar=0,status=0,width=626,height=456,top=&#39;+sTop+&#39;,left=&#39;+sLeft);return false;">
+<img src="./Python - Sorting Algorithms_files/twitterIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open(&#39;https://www.linkedin.com/cws/share?url=&#39; + &#39;https://www.tutorialspoint.com/python/python_sorting_algorithms.htm&amp;title=&#39;+ document.title,&#39;sharer&#39;,&#39;toolbar=0,status=0,width=626,height=456,top=&#39;+sTop+&#39;,left=&#39;+sLeft);return false;">
+<img src="./Python - Sorting Algorithms_files/linkedinIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open(&#39;https://plus.google.com/share?url=https://www.tutorialspoint.com/python/python_sorting_algorithms.htm&#39;,&#39;sharer&#39;,&#39;toolbar=0,status=0,width=626,height=456,top=&#39;+sTop+&#39;,left=&#39;+sLeft);return false;">
+<img src="./Python - Sorting Algorithms_files/googlePlusIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open(&#39;https://www.stumbleupon.com/submit?url=https://www.tutorialspoint.com/python/python_sorting_algorithms.htm&amp;title=&#39;+ document.title,&#39;sharer&#39;,&#39;toolbar=0,status=0,width=626,height=456,top=&#39;+sTop+&#39;,left=&#39;+sLeft);return false;">
+<img src="./Python - Sorting Algorithms_files/StumbleUponIcon.jpg" alt="img">
+</a>
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open(&#39;https://reddit.com/submit?url=https://www.tutorialspoint.com/python/python_sorting_algorithms.htm&amp;title=&#39;+ document.title,&#39;sharer&#39;,&#39;toolbar=0,status=0,width=626,height=656,top=&#39;+sTop+&#39;,left=&#39;+sLeft);return false;">
+<img src="./Python - Sorting Algorithms_files/reddit.jpg" alt="img">
+</a>
+</div>
+<div class="rightgooglead">
+<script><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_format = "300x250_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script src="./Python - Sorting Algorithms_files/f.txt">
+</script>
+</div>
+<div class="rightgooglead">
+<script><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 600;
+google_ad_format = "300x600_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script src="./Python - Sorting Algorithms_files/f.txt">
+</script>
+</div>
+<div class="rightgooglead">
+<script><!--
+google_ad_client = "ca-pub-2537027957187252";
+/* Right Side Ad */
+google_ad_slot = "right_side_ad";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script src="./Python - Sorting Algorithms_files/f.txt">
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-1">
+<a href="https://www.tutorialspoint.com/index.htm" class="logo"> <img alt="Tutorials Point" class="img-responsive" src="./Python - Sorting Algorithms_files/logo-footer.png"> </a>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <nav id="sub-menu">
+      <ul>
+         <li><a href="https://www.tutorialspoint.com/about/about_privacy.htm">Privacy Policy</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/about_cookies.htm">Cookies Policy</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/contact_us.htm">Contact</a></li>
+      </ul>
+   </nav>
+</div>
+<div class="col-md-3 col-sm-12 col-xs-12">
+<p>© Copyright 2019. All Rights Reserved.</p>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <div class="news-group">
+      <input type="text" class="form-control-foot search" name="textemail" id="textemail" autocomplete="off" placeholder="Enter email for newsletter" onfocus="if (this.value == &#39;Enter email for newsletter...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Enter email for newsletter...&#39;;}">
+      <span class="input-group-btn"> <button class="btn btn-default btn-footer" id="btnemail" type="submit" onclick="javascript:void(0);">go</button> </span>
+      <div id="newsresponse"></div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="privacy-banner" style="display: inherit;">
+  <div>
+    <p>
+      We use cookies to provide and improve our services. By using our site, you consent to our Cookies Policy.
+      <a id="banner-accept" href="javascript:void(0)">Accept</a>
+      <a id="banner-learn" href="https://www.tutorialspoint.com/about/about_cookies.htm" target="_blank">Learn more</a>
+    </p>
+  </div>
+</div>
+<script>
+// Banner Trigger if Not Closed
+if (!localStorage.bannerClosed) {
+  document.getElementById('privacy-banner').style.display = "inherit";
+} else {
+  document.getElementById('privacy-banner').style.display = "none";
+}
+document.getElementById('banner-accept').addEventListener('click', function() {
+  document.getElementById('privacy-banner').style.display = "none";
+  localStorage.bannerClosed = 'true';
+});
+if (navigator.userAgent.match(/Opera|OPR\//)) {
+  document.getElementById('privacy-banner').style.display = "inherit";
+}
+</script>
+<!-- Libs -->
+<script src="./Python - Sorting Algorithms_files/custom-min.js.download"></script><a class="scroll-to-top" href="https://www.tutorialspoint.com/#" id="scrollToTop"><i class="icon icon-chevron-up icon-white"></i></a>
+<script src="./Python - Sorting Algorithms_files/urchin.js.download">
+</script>
+<script>
+_uacct = "UA-232293-6";
+urchinTracker();
+$('.pg-icon').click(function(){
+   $('.wrapLoader').show();
+});
+</script>
+
+
+
+<div class="autocomplete-suggestions " style="top: 42px; left: 0px; width: 8px;"></div></body></html>

@@ -1,0 +1,28 @@
+3> Matplotlib
+1> Seaborn
+2> Plotty
+
+
+Function: Lambda
+Pandas: P.vot Advance
+        Matplotlib Seaborn
+        plotty
+
+
+What is Machine Learning?
+Write the procedure of machine learning
+What is _____________ : 1, 2, 
+Write and describe the mathematical formula___________
+What are the different use of ___________ in real life
+Write and describe the use of _____________ in python
+
+
+1> Regression
+2> Classification
+3> Clustering
+4> PCA
+5> Decision Tree
+6> Forcasting
+7> Markov Chain
+8> Support Vector Machine
+9> Factor Analysis
