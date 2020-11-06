@@ -1,4 +1,4 @@
-# Code solutions
+# Solution to coding challenges
 
 ## What are the codes for?
 
